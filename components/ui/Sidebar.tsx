@@ -4,7 +4,7 @@ import { Box, Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Typog
 
 import InboxOutlinedIcon from '@mui/icons-material/InboxOutlined';
 import MailOutlineOutlinedIcon from '@mui/icons-material/MailOutlineOutlined';
-import { UIContext } from '../../../context/ui';
+import { UIContext } from '../../context/ui';
 
 
 
