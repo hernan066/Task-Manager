@@ -1,5 +1,4 @@
-import { UIState } from '.';
-import { Paper } from '@mui/material';
+import { UIState } from './';
 
 
 type UIActionType = 
@@ -8,7 +7,6 @@ type UIActionType =
     | { type: 'UI - Set isAddingEntry', payload: boolean }
     | { type: 'UI - Start Dragging' }
     | { type: 'UI - End Dragging' }
-    
 
 
 export const uiReducer = ( state: UIState, action: UIActionType ): UIState => {
@@ -25,22 +23,25 @@ export const uiReducer = ( state: UIState, action: UIActionType ): UIState => {
             ...state,
             sidemenuOpen: false,
            }
-      case 'UI - Set isAddingEntry':
-          return {
-            ...state,
-            isAddingEntry: action.payload,
+
+
+      case 'UI - Set isAddingEntry': 
+           return {
+              ...state,
+              isAddingEntry: action.payload
            }
+
       case 'UI - Start Dragging':
-          return {
+         return {
             ...state,
-            isDragging: true,
-            }
+            isDragging: true
+         }
+         
       case 'UI - End Dragging':
-          return {
+         return {
             ...state,
-            isDragging: false,
-            }
-     
+            isDragging: false
+         }
 
        default:
           return state;

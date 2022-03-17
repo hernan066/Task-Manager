@@ -13,7 +13,7 @@ export const darkTheme = createTheme({
             main: red.A400
         },
         },
-        //Personalization de componentes
+
         components: {
             MuiAppBar: {
                 defaultProps: {

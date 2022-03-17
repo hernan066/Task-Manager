@@ -1,45 +1,46 @@
-import { Card, CardHeader, Grid, Typography } from '@mui/material';
-import type { NextPage } from 'next'
-import { Layout } from '../components/layouts';
-import { EntryList } from '../components/ui';
-import { NewEntry } from '../components/ui/NewEntry';
+import type { NextPage } from 'next';
+import { Card, CardContent, CardHeader, Grid } from '@mui/material';
 
+import { Layout } from '../components/layouts';
+import { EntryList, NewEntry } from '../components/ui';
 
 const HomePage: NextPage = () => {
   return (
-  <Layout>
-    <Grid container spacing={ 2 }>
+    <Layout title='Home - OpenJira'>
+      
+      <Grid container spacing={ 2 }>
 
-<Grid item xs={ 12 } sm={ 4 }>
-  <Card sx={{ height: 'calc(100vh - 100px )' }}>
-    <CardHeader title="Pending" />
+        <Grid item xs={ 12 } sm={ 4 }>
+          <Card sx={{ height: 'calc(100vh - 100px )' }}>
+            <CardHeader title="Pendientes" />
 
-    {/* Agregar una nueva entrada */}
-    {/* Listado de las entradas */}
-     <NewEntry />
-    <EntryList status='pending'/> 
-   
-
-  </Card>
-</Grid>
-
-<Grid item xs={ 12 } sm={ 4 }>
-  <Card sx={{ height: 'calc(100vh - 100px )' }}>
-    <CardHeader title="In progress" />
-     <EntryList status='in-progress' /> 
-  </Card>
-</Grid>
-
-<Grid item xs={ 12 } sm={ 4 }>
-  <Card sx={{ height: 'calc(100vh - 100px )' }}>
-    <CardHeader title="Complete" />
-     <EntryList status='finished' /> 
-  </Card>
-</Grid>
+            {/* Agregar una nueva entrada */}
+            {/* Listado de las entradas */}
+            <NewEntry />
+            <EntryList status='pending'/>
 
 
-</Grid>
-  </Layout>
+          </Card>
+        </Grid>
+
+        <Grid item xs={ 12 } sm={ 4 }>
+          <Card sx={{ height: 'calc(100vh - 100px )' }}>
+            <CardHeader title="En Progreso" />
+            <EntryList status='in-progress' />
+          </Card>
+        </Grid>
+
+        <Grid item xs={ 12 } sm={ 4 }>
+          <Card sx={{ height: 'calc(100vh - 100px )' }}>
+            <CardHeader title="Completadas" />
+            <EntryList status='finished' />
+          </Card>
+        </Grid>
+
+
+      </Grid>
+
+    </Layout>
   )
 }
 

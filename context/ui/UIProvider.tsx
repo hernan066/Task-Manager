@@ -25,17 +25,19 @@ export const UIProvider:FC = ({ children }) => {
     }
 
     const closeSideMenu = () => dispatch({ type: 'UI - Close Sidebar' })
-    
-    const setIsAddingEntry = (isAdding: boolean) => {
-        dispatch({ type: 'UI - Set isAddingEntry', payload: isAdding });
-    }
-    
-    const startDragging = () => dispatch({ type: 'UI - Start Dragging' });
-    
-    const endDragging = () => dispatch({ type: 'UI - End Dragging' });
-    
 
-  
+    const setIsAddingEntry = ( isAdding: boolean ) => {
+        dispatch({ type:'UI - Set isAddingEntry', payload: isAdding });
+    }
+
+    const startDragging = () => {
+        dispatch({ type: 'UI - Start Dragging' });
+    }
+
+    const endDragging = () => {
+        dispatch({ type: 'UI - End Dragging' });
+    }
+
 
     return (
         <UIContext.Provider value={{
@@ -44,10 +46,11 @@ export const UIProvider:FC = ({ children }) => {
             // Methods
             closeSideMenu,
             openSideMenu,
+            
             setIsAddingEntry,
-            startDragging,
-            endDragging,    
 
+            endDragging,
+            startDragging,
         }}>
             { children }
         </UIContext.Provider>

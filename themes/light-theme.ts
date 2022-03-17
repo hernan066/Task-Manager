@@ -21,12 +21,9 @@ export const lightTheme = createTheme({
     },
 
     components: {
-        
-      //Personalization de componentes
-      MuiAppBar: {
+        MuiAppBar: {
             defaultProps: {
-                //shadows bottom
-              elevation: 0
+                elevation: 0
             },
             styleOverrides: {}
         }
