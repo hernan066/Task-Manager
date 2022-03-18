@@ -1,28 +1,24 @@
-import { FC } from 'react';
-import Head from 'next/head';
+import { FC } from "react";
+import Head from "next/head";
 
-import { Box } from '@mui/material';
-import { Navbar, Sidebar } from '../ui';
-
+import { Navbar } from "../ui";
+import { Bg } from "./Bg";
 
 interface Props {
-    title?: string;
+  title?: string;
 }
 
-export const Layout:FC<Props> = ({ title = 'OpenJira', children }) => {
+export const Layout: FC<Props> = ({ title = "OpenJira", children }) => {
   return (
-      <Box sx={{ flexFlow: 1 }}>
-          <Head>
-                <title>{ title }</title>
-          </Head>
-
-            <Navbar />
-            <Sidebar />
-
-            <Box sx={{ padding: '10px 20px'  }}>
-                { children }
-            </Box>
-
-      </Box>
-  )
+    <>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <Bg />
+      <div className="app">
+        <Navbar />
+        <div className="wrapper">{children}</div>
+      </div>
+    </>
+  );
 };

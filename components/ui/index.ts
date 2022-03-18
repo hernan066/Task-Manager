@@ -1,6 +1,6 @@
 
-export * from './EntryCard';
-export * from './EntryList';
-export * from './Navbar';
-export * from './NewEntry';
+export * from './entries/EntryCard';
+export * from './entries/EntryList';
+export * from './navbar/Navbar';
+export * from './entries/NewEntry';
 export * from './Sidebar';

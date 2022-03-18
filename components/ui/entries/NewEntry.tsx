@@ -4,8 +4,8 @@ import { Box, Button, TextField } from '@mui/material';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
 import AddIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
-import { EntriesContext } from '../../context/entries';
-import { UIContext } from '../../context/ui';
+import { EntriesContext } from '../../../context/entries';
+import { UIContext } from '../../../context/ui';
 
 export const NewEntry = () => {
     
@@ -80,8 +80,9 @@ export const NewEntry = () => {
                     fullWidth
                     variant='outlined'
                     onClick={() => setIsAddingEntry( true ) }
+                    color='info'
                 >
-                    Agregar Tarea
+                   Add new entry
                 </Button>
             )
 
