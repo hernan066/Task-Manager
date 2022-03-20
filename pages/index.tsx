@@ -1,19 +1,16 @@
-import type { NextPage } from 'next';
-import { Card, CardContent, CardHeader, Grid } from '@mui/material';
+import type { NextPage } from "next";
 
-import { Layout } from '../components/layouts';
-import { EntryList, NewEntry } from '../components/ui';
-import { Wrapper } from '../components/wrapper/Wrapper';
-import { Bg } from '../components/layouts/Bg';
+import { Layout } from "../components/layouts";
+import { MainContent } from "../components/home/main/MainContent";
 
 const HomePage: NextPage = () => {
   return (
-    <Layout title='Home - OpenJira'>
-      
-    <Wrapper />
-
+    <Layout title="Home - OpenJira">
+      <div className="main-container">
+        <MainContent />
+      </div>
     </Layout>
-  )
-}
+  );
+};
 
 export default HomePage;

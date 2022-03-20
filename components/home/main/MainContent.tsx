@@ -9,7 +9,7 @@ export const MainContent = () => {
   const [sectionName, setSectionName] = useState<string>("all");
 
   return (
-    <div className="content-wrapper">
+    <div className="content-wrapper is-active">
       <div className="main-header">
         <a className="menu-link-main" href="#">
           Tareas

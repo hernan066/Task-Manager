@@ -1,4 +1,4 @@
-import { UIState } from './';
+/* import { UIState } from './';
 
 
 type UIActionType = 
@@ -47,4 +47,4 @@ export const uiReducer = ( state: UIState, action: UIActionType ): UIState => {
           return state;
    }
 
-}
+} */

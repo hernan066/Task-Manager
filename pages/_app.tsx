@@ -1,16 +1,21 @@
-import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
 import { UIProvider } from '../context/ui';
 import { EntriesProvider } from '../context/entries';
 
-import { lightTheme, darkTheme } from '../themes';
+import {  darkTheme } from '../themes';
 
+
+import { store } from '../redux/store';
+
+import '../styles/globals.css';
+import { Provider } from 'react-redux';
 
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
+    <Provider store={store}>
     <EntriesProvider>
       <UIProvider>
         <ThemeProvider theme={ darkTheme }>
@@ -19,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </ThemeProvider>
       </UIProvider>
     </EntriesProvider>
+    </Provider>
   )
 }
 
