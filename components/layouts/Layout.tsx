@@ -1,28 +1,37 @@
-import { FC } from 'react';
-import Head from 'next/head';
+import { FC } from "react";
+import Head from "next/head";
 
-import { Box } from '@mui/material';
-import { Navbar, Sidebar } from '../ui';
-
+import { Navbar } from "../ui";
+import { Bg } from "./Bg";
+import { LeftSide } from "../home/left/LeftSide";
+import { New } from "../home/new/New";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 interface Props {
-    title?: string;
+  title?: string;
 }
 
-export const Layout:FC<Props> = ({ title = 'OpenJira', children }) => {
+export const Layout: FC<Props> = ({ title = "OpenJira", children }) => {
+  
+  const newTask = useSelector((state: RootState) => state.ui.newTaskOpen);
+  const dispatch = useDispatch();
+  
   return (
-      <Box sx={{ flexFlow: 1 }}>
-          <Head>
-                <title>{ title }</title>
-          </Head>
-
-            <Navbar />
-            <Sidebar />
-
-            <Box sx={{ padding: '10px 20px'  }}>
-                { children }
-            </Box>
-
-      </Box>
-  )
+    <>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <Bg />
+      <div className="app">
+        <Navbar />
+        <div className="wrapper">
+          <LeftSide />
+          <New />
+          {children}
+        </div>
+        <div className={`overlay-app ${ newTask ? "is-active" :""} `}></div>
+      </div>
+    </>
+  );
 };
