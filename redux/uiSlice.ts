@@ -1,11 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export interface CounterState {
-  newTaskOpen: boolean
+export interface uiState {
+  newTaskOpen: boolean,
+  isDragging: boolean,
+  isAddingEntry: boolean,
 }
 
-const initialState: CounterState = {
+const initialState: uiState = {
     newTaskOpen: false,
+    isDragging: false,
+    isAddingEntry: false,
 }
 
 export const uiSlice = createSlice({
@@ -25,10 +29,23 @@ export const uiSlice = createSlice({
         state.newTaskOpen = false;
        
       },
+      startDragging: (state) => {
+        state.isDragging = true;
+       
+      },
+      endDragging: (state) => {
+        state.isDragging = false;
+       
+      },
+      setIsAddingEntry: (state, action) => {
+          state.isAddingEntry = action.payload;
+        },
+        
+       
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {openNew, closeNew} = uiSlice.actions
+export const {openNew, closeNew, startDragging, endDragging, setIsAddingEntry} = uiSlice.actions
 
 export default uiSlice.reducer

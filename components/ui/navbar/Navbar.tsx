@@ -1,10 +1,4 @@
-import { useContext } from "react";
-
-import { UIContext } from "../../../context/ui";
-
 export const Navbar = () => {
-  const { openSideMenu } = useContext(UIContext);
-
   return (
     <div className="header">
       <div className="menu-circle"></div>

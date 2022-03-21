@@ -1,30 +1,30 @@
-import { DragEvent, FC, useContext } from "react";
-import {
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { DragEvent, FC } from "react";
 
-import { UIContext } from "../../../context/ui/UIContext";
+import { useDispatch } from "react-redux";
+import { endDragging, startDragging } from "../../../redux/uiSlice";
+
+
 import { Entry } from "../../../interfaces";
+
 
 interface Props {
   entry: Entry;
 }
 
 export const EntryCard: FC<Props> = ({ entry }) => {
-  const { startDragging, endDragging } = useContext(UIContext);
+  
+
+  const dispatch = useDispatch();
 
   const onDragStart = (event: DragEvent) => {
     event.dataTransfer.setData("text", entry._id);
 
-    startDragging();
+    dispatch(startDragging()) ;
   };
 
   const onDragEnd = () => {
-    endDragging();
+    
+    dispatch(endDragging()) ;
   };
 
   return (

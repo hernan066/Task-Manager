@@ -1,7 +1,11 @@
-import { FC, useContext, useMemo, DragEvent } from "react";
-import { EntriesContext } from "../../../context/entries";
-import { UIContext } from "../../../context/ui";
-import { EntryStatus } from "../../../interfaces";
+import { FC, useMemo, DragEvent, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { entriesApi } from "../../../apis";
+
+import { Entry, EntryStatus } from "../../../interfaces";
+import { refreshEntries, updateEntry } from "../../../redux/entrySlice";
+import { RootState } from "../../../redux/store";
+import { endDragging } from "../../../redux/uiSlice";
 import { EntryCard } from "./EntryCard";
 
 import styles from "./EntryList.module.css";
@@ -11,8 +15,10 @@ interface Props {
 }
 
 export const EntryList: FC<Props> = ({ status }) => {
-  const { entries, updateEntry } = useContext(EntriesContext);
-  const { isDragging, endDragging } = useContext(UIContext);
+  const entries = useSelector((state: RootState) => state.entry.entries);
+
+  const isDragging = useSelector((state: RootState) => state.ui.isDragging);
+  const dispatch = useDispatch();
 
   const entriesByStatus = useMemo(
     () => entries.filter((entry) => entry.status === status),
@@ -23,17 +29,48 @@ export const EntryList: FC<Props> = ({ status }) => {
     event.preventDefault();
   };
 
+  ////////////////////////update Entries////////////////////////////////
+
   const onDropEntry = (event: DragEvent<HTMLDivElement>) => {
+    
     const id = event.dataTransfer.getData("text");
 
     const entry = entries.find((e) => e._id === id)!;
-    entry.status = status;
-    updateEntry(entry);
-    endDragging();
+
+    const entryNewStatus = {
+      ...entry,
+      status: status,
+    };
+
+    const update = async (entry: Entry) => {
+      try {
+        const { data } = await entriesApi.put<Entry>(
+          `/entries/${entry._id}`,
+          entry
+        );
+        dispatch(updateEntry(entry));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    update(entryNewStatus);
+    dispatch(endDragging());
   };
 
+  ////////////////////////refresh Entries////////////////////////////////
+
+  const refresh = async () => {
+    const { data } = await entriesApi.get<Entry[]>("/entries");
+    dispatch(refreshEntries(data));
+  };
+
+  useEffect(() => {
+    refresh();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    //   TODO: aquí haremos drop
     <div
       onDrop={onDropEntry}
       onDragOver={allowDrop}
