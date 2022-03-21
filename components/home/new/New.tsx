@@ -1,8 +1,17 @@
-import React from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { closeNew } from "../../../redux/uiSlice";
 
 export const New = () => {
+  
+  const newTask = useSelector((state: RootState) => state.ui.newTaskOpen);
+  const dispatch = useDispatch();
+  
+  
+  
   return (
-    <div className="pop-up visible">
+    <div className={`pop-up ${newTask ? "visible" : ""}`}>
       <div className="pop-up__title">
         New Task
         
@@ -14,7 +23,10 @@ export const New = () => {
       </div>
 
       <div className="content-button-wrapper">
-        <button className="content-button status-button open close">
+        <button 
+        className="content-button status-button open close"
+        onClick={()=>dispatch(closeNew())}
+        >
           Cancel
         </button>
         <button className="content-button status-button">Add</button>

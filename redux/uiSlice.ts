@@ -9,7 +9,7 @@ const initialState: CounterState = {
 }
 
 export const uiSlice = createSlice({
-  name: '[Ui] - NewTaskOpen',
+  name: 'ui',
   initialState,
   reducers: {
     

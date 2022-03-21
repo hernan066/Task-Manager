@@ -5,12 +5,18 @@ import { Navbar } from "../ui";
 import { Bg } from "./Bg";
 import { LeftSide } from "../home/left/LeftSide";
 import { New } from "../home/new/New";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 interface Props {
   title?: string;
 }
 
 export const Layout: FC<Props> = ({ title = "OpenJira", children }) => {
+  
+  const newTask = useSelector((state: RootState) => state.ui.newTaskOpen);
+  const dispatch = useDispatch();
+  
   return (
     <>
       <Head>
@@ -24,7 +30,7 @@ export const Layout: FC<Props> = ({ title = "OpenJira", children }) => {
           <New />
           {children}
         </div>
-        <div className="overlay-app is-active"></div>
+        <div className={`overlay-app ${ newTask ? "is-active" :""} `}></div>
       </div>
     </>
   );

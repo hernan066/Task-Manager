@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { openNew } from "../../../redux/uiSlice";
 
 import { All } from "./sections/All";
 import { Complete } from "./sections/Complete";
@@ -8,6 +11,9 @@ import { Pending } from "./sections/Pending";
 export const MainContent = () => {
   const [sectionName, setSectionName] = useState<string>("all");
 
+  const newTask = useSelector((state: RootState) => state.ui.newTaskOpen);
+  const dispatch = useDispatch();
+  
   return (
     <div className="content-wrapper is-active">
       <div className="main-header">
@@ -40,6 +46,9 @@ export const MainContent = () => {
             Complete
           </p>
         </div>
+          <button onClick={()=>dispatch(openNew()) } >
+            (+)
+          </button>
       </div>
 
       {
