@@ -1,4 +1,4 @@
-import { NewEntry, EntryList } from "../../../ui"
+import {  EntryList } from "../../../ui"
 
 
 export const All = () => {
@@ -7,7 +7,7 @@ export const All = () => {
     <div className="apps-card">
       <div className="app-card">
         <h4>Pending</h4>
-        {/* <NewEntry /> */}
+        
         <EntryList status="pending" />
       </div>
       <div className="app-card">

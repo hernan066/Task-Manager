@@ -1,4 +1,5 @@
-import { SetStateAction, useState } from "react";
+
+import { SetStateAction, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { entriesApi } from "../../../apis";
 import { Entry } from "../../../interfaces";
@@ -6,7 +7,14 @@ import { addNewEntry } from "../../../redux/entrySlice";
 import { RootState } from "../../../redux/store";
 import { closeNew } from "../../../redux/uiSlice";
 
+
+
+ 
+
 export const New = () => {
+  
+
+ 
   const newTask = useSelector((state: RootState) => state.ui.newTaskOpen);
   const dispatch = useDispatch();
 
@@ -21,20 +29,26 @@ export const New = () => {
 
   const onSave = async () => {
     if (inputValue.length === 0) return;
-    
-    const {data} = await entriesApi.post<Entry>('/entries', { description: inputValue });
+
+    const { data } = await entriesApi.post<Entry>("/entries", {
+      description: inputValue,
+    });
     dispatch(addNewEntry(data));
-   
+
     dispatch(closeNew());
     setTouched(false);
     setInputValue("");
-    
-    
   };
 
   return (
     <div className={`pop-up ${newTask ? "visible" : ""}`}>
-      <div className="pop-up__title">New Task</div>
+      <div className="pop-up__header">
+        <div className="pop-up__title">New Task</div>
+        <button className="pop-up-microphone">
+          <i className="fa-solid fa-microphone"></i>
+        </button>
+      </div>
+
       <div className="pop-up__textarea-wrapper">
         <textarea
           className="pop-up__textarea"

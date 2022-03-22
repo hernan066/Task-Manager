@@ -795,12 +795,29 @@ body.light-mode .video-bg:before {
   opacity: 1;
   
 }
+.pop-up__header{
+  display: flex;
+  justify-content: space-between;
+}
 .pop-up__title {
   padding-bottom: 10px;
   font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.pop-up-microphone{
+border: 1px solid var(--theme-color);
+border-radius: 50%;
+background-color: transparent;
+color: var(--theme-color);
+height: 30px;
+width: 30px;
+cursor: pointer;
+
+}
+.pop-up-microphone:hover{
+  border: 2px solid var(--theme-color);
 }
 .pop-up__textarea-wrapper{
   padding-bottom: 20px;
