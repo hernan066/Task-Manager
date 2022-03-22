@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import { darkTheme } from "../themes";
 import "../styles/globals.css";
 
+import 'regenerator-runtime/runtime'
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>

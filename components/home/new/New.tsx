@@ -1,4 +1,3 @@
-
 import { SetStateAction, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { entriesApi } from "../../../apis";
@@ -7,19 +6,41 @@ import { addNewEntry } from "../../../redux/entrySlice";
 import { RootState } from "../../../redux/store";
 import { closeNew } from "../../../redux/uiSlice";
 
-
-
- 
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
 export const New = () => {
-  
-
- 
   const newTask = useSelector((state: RootState) => state.ui.newTaskOpen);
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState("");
   const [touched, setTouched] = useState(false);
+
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+  } = useSpeechRecognition();
+
+  console.log(listening);
+
+  const handleStartListen = () => {
+    SpeechRecognition.startListening({ continuous: true });
+    resetTranscript();
+  };
+  const handleStopListen = () => {
+    SpeechRecognition.stopListening();
+
+    if (transcript.length > 0) {
+      transcript.charAt(0).toUpperCase();
+      let transcriptWithDot = transcript + ".";
+      
+      
+      setInputValue(transcriptWithDot);
+    }
+  };
 
   const onTextFieldChanged = (event: {
     target: { value: SetStateAction<string> };
@@ -44,9 +65,21 @@ export const New = () => {
     <div className={`pop-up ${newTask ? "visible" : ""}`}>
       <div className="pop-up__header">
         <div className="pop-up__title">New Task</div>
-        <button className="pop-up-microphone">
-          <i className="fa-solid fa-microphone"></i>
-        </button>
+        {listening === true ? (
+          <button
+            className="pop-up-microphone on"
+            onClick={() => handleStopListen()}
+          >
+            <i className="fa-solid fa-microphone"></i>
+          </button>
+        ) : (
+          <button
+            className="pop-up-microphone"
+            onClick={() => handleStartListen()}
+          >
+            <i className="fa-solid fa-microphone"></i>
+          </button>
+        )}
       </div>
 
       <div className="pop-up__textarea-wrapper">

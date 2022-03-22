@@ -816,8 +816,18 @@ width: 30px;
 cursor: pointer;
 
 }
+
+.pop-up-microphone.on{
+  border: 1px solid red;
+  color: red;
+}
+
+
 .pop-up-microphone:hover{
   border: 2px solid var(--theme-color);
+}
+.pop-up-microphone.on:hover{
+  border: 2px solid red;
 }
 .pop-up__textarea-wrapper{
   padding-bottom: 20px;
