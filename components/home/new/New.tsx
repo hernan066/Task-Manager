@@ -65,7 +65,26 @@ export const New = () => {
     <div className={`pop-up ${newTask ? "visible" : ""}`}>
       <div className="pop-up__header">
         <div className="pop-up__title">New Task</div>
-        {listening === true ? (
+        
+        <button className="pop-up-close" onClick={() => dispatch(closeNew())}>
+        <i className="fa-solid fa-xmark"></i>
+
+        </button>
+      </div>
+
+      <div className="pop-up__textarea-wrapper">
+        <textarea
+          className="pop-up__textarea"
+          autoFocus
+          placeholder="Add new task"
+          onChange={onTextFieldChanged}
+          value={inputValue}
+        ></textarea>
+      </div>
+
+      <div className="content-button-wrapper">
+        
+      {listening === true ? (
           <button
             className="pop-up-microphone on"
             onClick={() => handleStopListen()}
@@ -80,27 +99,11 @@ export const New = () => {
             <i className="fa-solid fa-microphone"></i>
           </button>
         )}
-      </div>
-
-      <div className="pop-up__textarea-wrapper">
-        <textarea
-          className="pop-up__textarea"
-          autoFocus
-          placeholder="Add new task"
-          onChange={onTextFieldChanged}
-          value={inputValue}
-        ></textarea>
-      </div>
-
-      <div className="content-button-wrapper">
-        <button
-          className="content-button status-button open close"
-          onClick={() => dispatch(closeNew())}
-        >
-          Cancel
-        </button>
+        
+        
+       
         <button className="content-button status-button" onClick={onSave}>
-          Add
+          Send
         </button>
       </div>
     </div>
