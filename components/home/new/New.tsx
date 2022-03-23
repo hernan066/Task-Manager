@@ -28,7 +28,7 @@ export const New = () => {
 
   const handleStartListen = () => {
     SpeechRecognition.startListening({ continuous: true });
-    resetTranscript();
+    
   };
   const handleStopListen = () => {
     SpeechRecognition.stopListening();
@@ -36,8 +36,7 @@ export const New = () => {
     if (transcript.length > 0) {
       transcript.charAt(0).toUpperCase();
       let transcriptWithDot = transcript + ".";
-      
-      
+
       setInputValue(transcriptWithDot);
     }
   };
@@ -61,14 +60,18 @@ export const New = () => {
     setInputValue("");
   };
 
+  const onReset = () => {
+    resetTranscript();
+    setInputValue("");
+  }
+
   return (
     <div className={`pop-up ${newTask ? "visible" : ""}`}>
       <div className="pop-up__header">
         <div className="pop-up__title">New Task</div>
-        
-        <button className="pop-up-close" onClick={() => dispatch(closeNew())}>
-        <i className="fa-solid fa-xmark"></i>
 
+        <button className="pop-up-close" onClick={() => dispatch(closeNew())}>
+          <i className="fa-solid fa-xmark"></i>
         </button>
       </div>
 
@@ -83,29 +86,28 @@ export const New = () => {
       </div>
 
       <div className="content-button-wrapper">
-        
-      {listening === true ? (
-          <button
-            className="pop-up-microphone on"
-            onClick={() => handleStopListen()}
-          >
-            <i className="fa-solid fa-microphone"></i>
-          </button>
-        ) : (
-          <button
-            className="pop-up-microphone"
-            onClick={() => handleStartListen()}
-          >
-            <i className="fa-solid fa-microphone"></i>
-          </button>
-        )}
-        
-        
-       
+        <button className="content-button status-button" onClick={onReset}>
+          Clear
+        </button>
         <button className="content-button status-button" onClick={onSave}>
           Send
         </button>
       </div>
+      {listening === true ? (
+        <button
+          className="pop-up-microphone on"
+          onClick={() => handleStopListen()}
+        >
+          <i className="fa-solid fa-microphone"></i>
+        </button>
+      ) : (
+        <button
+          className="pop-up-microphone"
+          onClick={() => handleStartListen()}
+        >
+          <i className="fa-solid fa-microphone"></i>
+        </button>
+      )}
     </div>
   );
 };

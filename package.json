@@ -9,11 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.8.2",
-    "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.5.1",
-    "@mui/material": "^5.5.1",
-    "@mui/system": "^5.5.1",
     "@reduxjs/toolkit": "^1.8.0",
     "@types/react-redux": "^7.1.23",
     "axios": "^0.26.1",

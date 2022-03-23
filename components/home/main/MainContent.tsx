@@ -18,7 +18,7 @@ export const MainContent = () => {
     <div className="content-wrapper is-active">
       <div className="main-header">
         <a className="menu-link-main" href="#">
-          Tareas
+          Task
         </a>
         <div className="header-menu">
           <p
@@ -46,8 +46,8 @@ export const MainContent = () => {
             Complete
           </p>
         </div>
-          <button onClick={()=>dispatch(openNew()) } >
-            (+)
+          <button className="main-header-link-add" onClick={()=>dispatch(openNew()) } >
+          <i className="fa-solid fa-plus"></i> 
           </button>
       </div>
 
