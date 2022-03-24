@@ -15,7 +15,7 @@ export const New = () => {
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState("");
-  const [touched, setTouched] = useState(false);
+  
 
   const {
     transcript,
@@ -25,10 +25,10 @@ export const New = () => {
   } = useSpeechRecognition();
 
   console.log(listening);
+  console.log(browserSupportsSpeechRecognition)
 
   const handleStartListen = () => {
     SpeechRecognition.startListening({ continuous: true });
-    
   };
   const handleStopListen = () => {
     SpeechRecognition.stopListening();
@@ -56,14 +56,14 @@ export const New = () => {
     dispatch(addNewEntry(data));
 
     dispatch(closeNew());
-    setTouched(false);
+    
     setInputValue("");
   };
 
   const onReset = () => {
     resetTranscript();
     setInputValue("");
-  }
+  };
 
   return (
     <div className={`pop-up ${newTask ? "visible" : ""}`}>
@@ -86,23 +86,35 @@ export const New = () => {
       </div>
 
       <div className="content-button-wrapper">
-        <button className="content-button status-button" onClick={onReset}>
+        <button
+          className="new-button"
+          disabled={inputValue.length === 0 ? true : false}
+          onClick={onReset}
+        >
           Clear
         </button>
-        <button className="content-button status-button" onClick={onSave}>
+        <button
+          className="new-button"
+          disabled={inputValue.length === 0 ? true : false}
+          onClick={onSave}
+        >
           Send
         </button>
       </div>
+      
+      
+      
+      
       {listening === true ? (
         <button
-          className="pop-up-microphone on"
+          className={`pop-up-microphone on ${!browserSupportsSpeechRecognition ? 'no-display' :'' } `} 
           onClick={() => handleStopListen()}
         >
           <i className="fa-solid fa-microphone"></i>
         </button>
       ) : (
         <button
-          className="pop-up-microphone"
+          className={`pop-up-microphone ${!browserSupportsSpeechRecognition ? 'no-display' :'' } `}
           onClick={() => handleStartListen()}
         >
           <i className="fa-solid fa-microphone"></i>

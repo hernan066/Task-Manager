@@ -20,6 +20,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
 
         case 'GET':
             return getEntry( req, res );
+        
+        case 'DELETE':
+            return deleteEntry( req, res );
 
             
         default:
@@ -78,4 +81,19 @@ const updateEntry = async( req: NextApiRequest, res: NextApiResponse<Data> ) => 
 
 
 
+}
+
+const deleteEntry = async( req: NextApiRequest, res: NextApiResponse ) => {
+        
+        const { id } = req.query;
+    
+        await db.connect();
+        const entryToDelete = await Entry.findByIdAndDelete( id );
+        await db.disconnect();
+    
+        if ( !entryToDelete ) {
+            return res.status(400).json({ message: 'No hay entrada con ese ID: ' + id })
+        }
+    
+        return res.status(200).json({ message: 'Entrada borrada' });
 }

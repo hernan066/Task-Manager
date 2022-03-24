@@ -4,7 +4,7 @@ import Head from "next/head";
 import { Navbar } from "../ui";
 import { Bg } from "./Bg";
 import { LeftSide } from "../home/left/LeftSide";
-import { New } from "../home/new/New";
+import { New } from "../ui/entries/New";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
@@ -21,7 +21,7 @@ export const Layout: FC<Props> = ({ title = "OpenJira", children }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <Bg />
+      {/* <Bg /> */}
       <div className="app">
         <Navbar />
         <div className="wrapper">

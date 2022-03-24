@@ -37,7 +37,7 @@ export const EntryList: FC<Props> = ({ status }) => {
 
     const entry = entries.find((e) => e._id === id)!;
 
-    const entryNewStatus = {
+    const entryNewStatus: Entry = {
       ...entry,
       status: status,
     };

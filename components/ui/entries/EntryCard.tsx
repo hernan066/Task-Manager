@@ -5,6 +5,10 @@ import { endDragging, startDragging } from "../../../redux/uiSlice";
 
 
 import { Entry } from "../../../interfaces";
+import { useRouter } from "next/router";
+import { getFormatDistanceToNow } from '../../../utils/dateFunctions';
+
+
 
 
 interface Props {
@@ -13,7 +17,7 @@ interface Props {
 
 export const EntryCard: FC<Props> = ({ entry }) => {
   
-
+  const router = useRouter();
   const dispatch = useDispatch();
 
   const onDragStart = (event: DragEvent) => {
@@ -30,6 +34,7 @@ export const EntryCard: FC<Props> = ({ entry }) => {
   return (
     <div
       className="app-card__entry"
+      onClick={() => router.push(`/entries/${entry._id}`)}
       // Eventos de drag
       draggable
       onDragStart={onDragStart}
@@ -38,7 +43,7 @@ export const EntryCard: FC<Props> = ({ entry }) => {
       <div>
         <div className="app-card__text">
           <p>{entry.description}</p>
-          <span>hace 30 minutos</span>
+          <span>{getFormatDistanceToNow(entry.createdAt)}</span>
         </div>
 
        
