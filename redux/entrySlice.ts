@@ -18,7 +18,7 @@ export const entrySlice = createSlice({
       state.entries = [ ...state.entries, action.payload ];
     },
     updateEntry: (state, action) => {
-      state.entries = state.entries.map( (entry: { _id: string; status: EntryStatus; description: string; }) => {
+      state.entries = state.entries.map( (entry: Entry) => {
         if ( entry._id === action.payload._id ) {
            entry.status = action.payload.status;
            entry.description = action.payload.description;

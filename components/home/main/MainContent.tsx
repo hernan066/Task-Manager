@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
-import { openNew } from "../../../redux/uiSlice";
+import { openNew, setTypeTabEntry } from "../../../redux/uiSlice";
 
 import { All } from "./sections/All";
 import { Complete } from "./sections/Complete";
@@ -9,8 +9,9 @@ import { InProgress } from "./sections/InProgress";
 import { Pending } from "./sections/Pending";
 
 export const MainContent = () => {
-  const [sectionName, setSectionName] = useState<string>("all");
+  
 
+  const tab = useSelector((state: RootState) => state.ui.typeTabEntry);
   const newTask = useSelector((state: RootState) => state.ui.newTaskOpen);
   const dispatch = useDispatch();
   
@@ -22,28 +23,29 @@ export const MainContent = () => {
         </a>
         <div className="header-menu">
           <p
-            className={`main-header-link ${ sectionName === 'all'? 'is-active' : ''}`}
-            onClick={() => setSectionName("all")}
+            className={`main-header-link ${ tab === 'all'? 'is-active' : ''}`}
+            onClick={() => dispatch(setTypeTabEntry('all'))}
           >
             All
           </p>
           <p
-            className={`main-header-link ${ sectionName === 'pending'? 'is-active' : ''}`}
-            onClick={() => setSectionName("pending")}
+            className={`main-header-link ${ tab === 'pending'? 'is-active' : ''}`}
+            onClick={() => dispatch(setTypeTabEntry('pending'))}
+            
           >
             Pending
           </p>
           <p
-            className={`main-header-link ${ sectionName === 'inProgress'? 'is-active' : ''}`}
-            onClick={() => setSectionName("inProgress")}
+            className={`main-header-link ${ tab === 'inProgress'? 'is-active' : ''}`}
+            onClick={() => dispatch(setTypeTabEntry('inProgress'))}
           >
             In progress
           </p>
           <p
-            className={`main-header-link ${ sectionName === 'complete'? 'is-active' : ''}`}
-            onClick={() => setSectionName("complete")}
+            className={`main-header-link ${ tab === 'finished'? 'is-active' : ''}`}
+            onClick={() => dispatch(setTypeTabEntry('finished'))}
           >
-            Complete
+            Finished
           </p>
         </div>
           <button className="main-header-link-add" onClick={()=>dispatch(openNew()) } >
@@ -52,16 +54,16 @@ export const MainContent = () => {
       </div>
 
       {
-        sectionName === 'pending' && <Pending />
+        tab === 'pending' && <Pending />
       }
       {
-        sectionName === 'inProgress' && <InProgress />
+        tab === 'inProgress' && <InProgress />
       }
       {
-        sectionName === 'complete' && <Complete />
+        tab === 'finished' && <Complete />
       }
       {
-        sectionName === 'all' && <All />
+        tab === 'all' && <All />
       }
 
       

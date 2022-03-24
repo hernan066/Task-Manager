@@ -15,17 +15,15 @@ export const New = () => {
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState("");
-  
 
   const {
     transcript,
     listening,
     resetTranscript,
-    browserSupportsSpeechRecognition,
+    /* browserSupportsSpeechRecognition, */
   } = useSpeechRecognition();
 
-  console.log(listening);
-  console.log(browserSupportsSpeechRecognition)
+  
 
   const handleStartListen = () => {
     SpeechRecognition.startListening({ continuous: true });
@@ -56,7 +54,7 @@ export const New = () => {
     dispatch(addNewEntry(data));
 
     dispatch(closeNew());
-    
+
     setInputValue("");
   };
 
@@ -101,20 +99,17 @@ export const New = () => {
           Send
         </button>
       </div>
-      
-      
-      
-      
+
       {listening === true ? (
         <button
-          className={`pop-up-microphone on ${!browserSupportsSpeechRecognition ? 'no-display' :'' } `} 
+          className="pop-up-microphone on"
           onClick={() => handleStopListen()}
         >
           <i className="fa-solid fa-microphone"></i>
         </button>
       ) : (
         <button
-          className={`pop-up-microphone ${!browserSupportsSpeechRecognition ? 'no-display' :'' } `}
+          className="pop-up-microphone"
           onClick={() => handleStartListen()}
         >
           <i className="fa-solid fa-microphone"></i>

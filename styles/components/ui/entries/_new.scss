@@ -109,7 +109,7 @@
   cursor: pointer;
   transition: 0.3s;
   white-space: nowrap;
-  border-style: solid;
+ /*  border-style: solid;
   border-width: 2px;
   border-image: linear-gradient(
       to right top,
@@ -126,7 +126,8 @@
       #ffc848,
       #ffe652
     )
-    1;
+    1; */
+  border: 1px solid var(--border-color-r);
   font-size: 15px;
   margin-top: 0;
   padding: 6px 24px;
@@ -151,7 +152,7 @@
   background: rgba(2, 2, 2, 0.1);
 }
 .new-button:disabled {
-  color: rgba(255, 255, 255, 0.09);
+  /* color: rgba(255, 255, 255, 0.09); */
   cursor: not-allowed;
 }
 

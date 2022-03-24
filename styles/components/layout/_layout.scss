@@ -1,17 +1,20 @@
 .app {
   background-color: var(--theme-bg-color);
+  
   max-width: 1250px;
   max-height: 860px;
   height: 90vh;
+  width: 1350px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  width: 100%;
+
   border-radius: 14px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   font-size: 15px;
   font-weight: 500;
+  
 }
 
 .wrapper {
@@ -39,6 +42,7 @@
   opacity: 0;
   visibility: hidden;
   transition: 0.3s;
+  z-index: 2;
 }
 .overlay-app.is-active {
   visibility: visible;

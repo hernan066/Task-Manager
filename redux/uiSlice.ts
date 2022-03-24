@@ -3,13 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 export interface uiState {
   newTaskOpen: boolean,
   isDragging: boolean,
-  isAddingEntry: boolean,
+  typeTabEntry: string,
 }
 
 const initialState: uiState = {
     newTaskOpen: false,
     isDragging: false,
-    isAddingEntry: false,
+    typeTabEntry: 'all',
 }
 
 export const uiSlice = createSlice({
@@ -37,8 +37,8 @@ export const uiSlice = createSlice({
         state.isDragging = false;
        
       },
-      setIsAddingEntry: (state, action) => {
-          state.isAddingEntry = action.payload;
+      setTypeTabEntry: (state, action) => {
+          state.typeTabEntry = action.payload;
         },
         
        
@@ -46,6 +46,6 @@ export const uiSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {openNew, closeNew, startDragging, endDragging, setIsAddingEntry} = uiSlice.actions
+export const {openNew, closeNew, startDragging, endDragging, setTypeTabEntry} = uiSlice.actions
 
 export default uiSlice.reducer

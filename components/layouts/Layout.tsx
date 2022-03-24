@@ -12,7 +12,7 @@ interface Props {
   title?: string;
 }
 
-export const Layout: FC<Props> = ({ title = "OpenJira", children }) => {
+export const Layout: FC<Props> = ({ title = "Task Manager", children }) => {
   
   const newTask = useSelector((state: RootState) => state.ui.newTaskOpen);
 
@@ -21,7 +21,7 @@ export const Layout: FC<Props> = ({ title = "OpenJira", children }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      {/* <Bg /> */}
+      <Bg /> 
       <div className="app">
         <Navbar />
         <div className="wrapper">

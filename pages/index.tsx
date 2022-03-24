@@ -8,7 +8,7 @@ import { MainContent } from "../components/home/main/MainContent";
 
 const HomePage: NextPage = () => {
   return (
-    <Layout title="Home - OpenJira">
+    <Layout title="Home - Task Manager">
       <div className="main-container">
         <MainContent />
       </div>
