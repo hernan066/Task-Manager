@@ -52,10 +52,10 @@
   top: -15px;
 }
 
-.pop-up-microphone {
-  border: 1px solid var(--theme-color);
+.pop-up-microphone-on,
+.pop-up-microphone-off {
   border-radius: 50%;
-  background-color: transparent;
+  background: transparent;
   color: var(--theme-color);
   height: 30px;
   width: 30px;
@@ -63,22 +63,22 @@
   margin-right: 10px;
   position: absolute;
   bottom: 30px;
+  
 }
 
-.pop-up-microphone.on {
+.pop-up-microphone-on {
   border: 1px solid red;
   color: red;
 }
-.pop-up-microphone.no-display{
+.pop-up-microphone-off {
+  border: 1px solid #fff;
+  color: #fff;
+}
+.pop-up-microphone-on.no-display,
+.pop-up-microphone-off.no-display {
   display: none;
 }
 
-.pop-up-microphone:hover {
-  border: 2px solid var(--theme-color);
-}
-.pop-up-microphone.on:hover {
-  border: 2px solid red;
-}
 .pop-up__textarea-wrapper {
   padding-bottom: 20px;
 }
@@ -107,9 +107,9 @@
   margin-top: 16px;
   margin-left: 10px;
   cursor: pointer;
-  transition: 0.3s;
+  *transition: 0.3s;
   white-space: nowrap;
- /*  border-style: solid;
+  /*  border-style: solid;
   border-width: 2px;
   border-image: linear-gradient(
       to right top,

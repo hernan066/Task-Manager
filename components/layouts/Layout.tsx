@@ -13,7 +13,6 @@ interface Props {
 }
 
 export const Layout: FC<Props> = ({ title = "Task Manager", children }) => {
-  
   const newTask = useSelector((state: RootState) => state.ui.newTaskOpen);
 
   return (
@@ -21,12 +20,13 @@ export const Layout: FC<Props> = ({ title = "Task Manager", children }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <Bg /> 
+      <Bg />
       <div className="app">
         <Navbar />
         <div className="wrapper">
           <LeftSide />
           <New />
+
           {children}
         </div>
         <div className={`overlay-app ${newTask ? "is-active" : ""} `}></div>

@@ -1,9 +1,15 @@
 import {  EntryList } from "../../../ui"
+import { motion } from 'framer-motion';
 
 
 export const All = () => {
   return (
-    <div className="content-section">
+    <motion.div 
+    className="content-section"
+    initial={{ opacity: 0, x: '-100%' }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.5 }}
+    >
     <div className="apps-card">
       <div className="app-card">
         <h4>Pending</h4>
@@ -21,6 +27,6 @@ export const All = () => {
         <EntryList status="finished" />
       </div>
     </div>
-  </div>
+  </motion.div>
   )
 }
