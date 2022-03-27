@@ -1,4 +1,4 @@
-import { SetStateAction,  useState } from "react";
+import { SetStateAction, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { entriesApi } from "../../../apis";
 import { Entry } from "../../../interfaces";
@@ -13,15 +13,9 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 
 const newVariants = {
-  initial: { opacity: 0, scale: 0.1, y: "-100%", x: "100%" },
-  animate: { opacity: 1, scale: 1, y: 0, x: 0, transition: { duration: 0.25 } },
-  exit: {
-    opacity: 0,
-    scale: 0.1,
-    y: "-100%",
-    x: "100%",
-    transition: { duration: 0.25 },
-  },
+  initial: { opacity: 0, y: "-100%",  x: '-50%' },
+  animate: { opacity: 1, y: '-50%', x: '-50%',  transition: { duration: 0.25 } },
+  exit: {opacity: 0,y: "-100%",transition: { duration: 0.25 }},
 };
 
 export const New = () => {

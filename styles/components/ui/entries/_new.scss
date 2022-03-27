@@ -1,16 +1,18 @@
 .pop-up {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 30%;
-  left: 30%;
-  width: 500px;
-  padding: 30px 40px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 400px;
+  padding: 20px 40px;
   overflow-y: auto;
   box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
   background-color: var(--popup-bg);
   border-radius: 6px;
   z-index: 10;
+  
 }
 
 .pop-up__header {
@@ -35,7 +37,7 @@
   cursor: pointer;
   position: absolute;
   right: -20px;
-  top: -15px;
+  top: -8px;
 }
 
 .pop-up__textarea-wrapper {
@@ -109,7 +111,7 @@
   cursor: pointer;
   margin-right: 10px;
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;
 }
 
 .pop-up-microphone.on {
@@ -141,10 +143,12 @@
   border: 2px solid red;
 }
 
-@media screen and (max-width: 570px) {
-  .pop-up {
-    width: 100%;
+@media screen and (max-width: 430px) {
+  .pop-up{
+    min-width: 335px;
+    padding: 20px;
   }
+  
 }
 
 @media screen and (max-width: 390px) {

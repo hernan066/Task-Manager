@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { openNew, setTypeTabEntry } from "../../../redux/uiSlice";
@@ -11,46 +11,44 @@ import { AnimatePresence } from "framer-motion";
 
 export const MainContent = () => {
   const tab = useSelector((state: RootState) => state.ui.typeTabEntry);
-  const newTask = useSelector((state: RootState) => state.ui.newTaskOpen);
+  
   const dispatch = useDispatch();
 
   return (
-    <div className="content-wrapper is-active">
+    <div className="content-wrapper">
       <div className="main-header">
-        <a className="menu-link-main" href="#">
-          Task
-        </a>
+        <div className="menu-title">Task Status</div>
         <div className="header-menu">
-          <p
+          <div
             className={`main-header-link ${tab === "all" ? "is-active" : ""}`}
             onClick={() => dispatch(setTypeTabEntry("all"))}
           >
             All
-          </p>
-          <p
+          </div>
+          <div
             className={`main-header-link ${
               tab === "pending" ? "is-active" : ""
             }`}
             onClick={() => dispatch(setTypeTabEntry("pending"))}
           >
             Pending
-          </p>
-          <p
+          </div>
+          <div
             className={`main-header-link ${
               tab === "inProgress" ? "is-active" : ""
             }`}
             onClick={() => dispatch(setTypeTabEntry("inProgress"))}
           >
             In progress
-          </p>
-          <p
+          </div>
+          <div
             className={`main-header-link ${
               tab === "finished" ? "is-active" : ""
             }`}
             onClick={() => dispatch(setTypeTabEntry("finished"))}
           >
             Finished
-          </p>
+          </div>
         </div>
         <button
           className="main-header-link-add"
@@ -61,10 +59,10 @@ export const MainContent = () => {
       </div>
 
       <AnimatePresence exitBeforeEnter>
-        {tab === "pending" && <Pending key={tab}/>}
-        {tab === "inProgress" && <InProgress key={tab}/>}
-        {tab === "finished" && <Complete key={tab}/>}
-        {tab === "all" && <All key={tab}/>}
+        {tab === "pending" && <Pending key={tab} />}
+        {tab === "inProgress" && <InProgress key={tab} />}
+        {tab === "finished" && <Complete key={tab} />}
+        {tab === "all" && <All key={tab} />}
       </AnimatePresence>
     </div>
   );

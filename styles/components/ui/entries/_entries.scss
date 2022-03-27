@@ -4,12 +4,12 @@
   flex-direction: column;
 }
 
+
 /* /////////////////////////////////app-card////////////////////////////// */
 
 .apps-card {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   width: calc(100% + 20px);
   min-height: 650px;
 }
@@ -22,8 +22,8 @@
   font-size: 16px;
   background-color: var(--content-bg);
   border-radius: 14px;
-  border: 1px solid var(--theme-bg-color);
   padding: 20px;
+  
 }
 
 .app-card + .app-card {
@@ -72,25 +72,6 @@
   color: #ccc;
 }
 
-@media screen and (max-width: 1110px) {
-  .app-card {
-    width: calc(50% - 20px);
-  }
-  .app-card:last-child {
-    margin-top: 20px;
-    margin-left: 0px;
-  }
-}
-@media screen and (max-width: 565px) {
-  .app-card {
-    width: calc(100% - 20px);
-    margin-top: 20px;
-  }
-  .app-card + .app-card {
-    margin-left: 0;
-  }
-}
-
 ::-webkit-scrollbar {
   width: 6px;
   border-radius: 10px;
@@ -99,4 +80,29 @@
 ::-webkit-scrollbar-thumb {
   background: var(--scrollbar-bg);
   border-radius: 10px;
+}
+
+@media screen and (max-width: 1100px) {
+  .apps-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+    .app-card {
+      width: 98%;
+      margin-bottom: 20px;
+    }
+    .app-card + .app-card {
+       margin-left: 0px; 
+  }
+  }
+
+
+@media screen and (max-width: 565px) {
+  .app-card {
+    width: calc(100% - 20px);
+    margin-bottom: 20px;
+  }
+  .app-card + .app-card {
+    margin-left: 0;
+  }
 }

@@ -4,7 +4,7 @@
   max-width: 1250px;
   max-height: 860px;
   height: 90vh;
-  width: 1350px;
+  width: 80vw;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -21,6 +21,19 @@
   flex-grow: 1;
   overflow: hidden;
 }
+
+@media screen and (max-width: 1200px) {
+  .app {
+    width: 96vw;
+  }
+}
+@media screen and (max-width: 600px) {
+  .app {
+    height: 98vh;
+  }
+}
+  
+
 
 
 
