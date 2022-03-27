@@ -1,33 +1,18 @@
 .pop-up {
-  position: absolute;
-  padding: 30px 40px;
-  top: 30%;
-  left: 30%;
-  /* transform: translate(-50%, -50%); */
-  overflow-y: auto;
-  box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
-  /* transition: all 0.3s; */
-  z-index: 10;
-  background-color: var(--popup-bg);
-  width: 500px;
-  /* visibility: hidden; */
-  /* opacity: 0; */
-  border-radius: 6px;
   display: flex;
   flex-direction: column;
-  white-space: normal;
-  
-}
-@media screen and (max-width: 570px) {
-  .pop-up {
-    width: 100%;
-  }
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  width: 500px;
+  padding: 30px 40px;
+  overflow-y: auto;
+  box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
+  background-color: var(--popup-bg);
+  border-radius: 6px;
+  z-index: 10;
 }
 
-/* .pop-up.visible {
-  visibility: visible;
-  opacity: 1;
-} */
 .pop-up__header {
   display: flex;
   justify-content: center;
@@ -53,33 +38,6 @@
   top: -15px;
 }
 
-.pop-up-microphone-on,
-.pop-up-microphone-off {
-  border-radius: 50%;
-  background: transparent;
-  color: var(--theme-color);
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-  margin-right: 10px;
-  position: absolute;
-  bottom: 30px;
-  
-}
-
-.pop-up-microphone-on {
-  border: 1px solid red;
-  color: red;
-}
-.pop-up-microphone-off {
-  border: 1px solid #fff;
-  color: #fff;
-}
-.pop-up-microphone-on.no-display,
-.pop-up-microphone-off.no-display {
-  display: none;
-}
-
 .pop-up__textarea-wrapper {
   padding-bottom: 20px;
 }
@@ -94,6 +52,8 @@
   border: 1px solid #fff;
   border-radius: 3px;
 }
+
+//buttons
 
 .content-button-wrapper {
   margin-top: auto;
@@ -110,29 +70,12 @@
   cursor: pointer;
   *transition: 0.3s;
   white-space: nowrap;
-  /*  border-style: solid;
-  border-width: 2px;
-  border-image: linear-gradient(
-      to right top,
-      #cf4af3,
-      #e73bd7,
-      #f631bc,
-      #fd31a2,
-      #ff3a8b,
-      #ff4b78,
-      #ff5e68,
-      #ff705c,
-      #ff8c51,
-      #ffaa49,
-      #ffc848,
-      #ffe652
-    )
-    1; */
   border: 1px solid var(--border-color-r);
   font-size: 15px;
   margin-top: 0;
   padding: 6px 24px;
 }
+
 .new-button:hover {
   border-image: linear-gradient(
       to left top,
@@ -153,8 +96,55 @@
   background: rgba(2, 2, 2, 0.1);
 }
 .new-button:disabled {
-  /* color: rgba(255, 255, 255, 0.09); */
   cursor: not-allowed;
+}
+
+.pop-up-microphone {
+  border: 1px solid var(--theme-color);
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--theme-color);
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+  position: absolute;
+  bottom: 30px;
+}
+
+.pop-up-microphone.on {
+ *border: 1px solid red;
+  color: var(--border-color-r);
+  animation: Listen 2s ease infinite;
+}
+
+
+@keyframes Listen {
+  0% {
+    border: 1px solid #fff;
+  }
+  50% {
+    border: 1px solid var(--border-color-r);
+  }
+  100% {
+    border: 1px solid #fff;
+  }
+}
+.pop-up-microphone.no-display{
+  display: none;
+}
+
+.pop-up-microphone:hover {
+  border: 2px solid var(--theme-color);
+}
+.pop-up-microphone.on:hover {
+  border: 2px solid red;
+}
+
+@media screen and (max-width: 570px) {
+  .pop-up {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 390px) {
