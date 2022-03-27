@@ -60,11 +60,12 @@ export const MainContent = () => {
         </button>
       </div>
 
-      {tab === "pending" && <Pending />}
-
-      {tab === "inProgress" && <InProgress />}
-      {tab === "finished" && <Complete />}
-      {tab === "all" && <All />}
+      <AnimatePresence exitBeforeEnter>
+        {tab === "pending" && <Pending key={tab}/>}
+        {tab === "inProgress" && <InProgress key={tab}/>}
+        {tab === "finished" && <Complete key={tab}/>}
+        {tab === "all" && <All key={tab}/>}
+      </AnimatePresence>
     </div>
   );
 };

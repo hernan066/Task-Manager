@@ -27,7 +27,7 @@
 
 .content-wrapper.overlay {
   pointer-events: none;
-  transition: 0.3s;
+ /*  transition: 0.3s; */
   background-color: var(--overlay-bg);
 }
 
@@ -39,12 +39,12 @@
   top: 0;
   pointer-events: all;
   background-color: rgba(36, 39, 59, 0.8);
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.3s;
+ /*  opacity: 0; */
+  /* visibility: hidden; */
+  /* transition: 0.3s; */
   z-index: 2;
 }
-.overlay-app.is-active {
+/* .overlay-app.is-active {
   visibility: visible;
   opacity: 1;
-}
+} */

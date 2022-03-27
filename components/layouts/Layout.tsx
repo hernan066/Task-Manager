@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Head from "next/head";
 
 import { Navbar } from "../ui";
@@ -7,6 +7,7 @@ import { LeftSide } from "../home/left/LeftSide";
 import { New } from "../ui/entries/New";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import { AnimatePresence } from "framer-motion";
 
 interface Props {
   title?: string;
@@ -25,11 +26,12 @@ export const Layout: FC<Props> = ({ title = "Task Manager", children }) => {
         <Navbar />
         <div className="wrapper">
           <LeftSide />
-          <New />
+          <AnimatePresence>
+            {newTask === "id-new-task-open" ? <New key={newTask} /> : null}
+          </AnimatePresence>
 
           {children}
         </div>
-        <div className={`overlay-app ${newTask ? "is-active" : ""} `}></div>
       </div>
     </>
   );

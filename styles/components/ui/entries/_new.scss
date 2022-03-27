@@ -1,21 +1,22 @@
 .pop-up {
   position: absolute;
   padding: 30px 40px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 30%;
+  left: 30%;
+  /* transform: translate(-50%, -50%); */
   overflow-y: auto;
   box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s;
+  /* transition: all 0.3s; */
   z-index: 10;
   background-color: var(--popup-bg);
   width: 500px;
-  visibility: hidden;
-  opacity: 0;
+  /* visibility: hidden; */
+  /* opacity: 0; */
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   white-space: normal;
+  
 }
 @media screen and (max-width: 570px) {
   .pop-up {
@@ -23,10 +24,10 @@
   }
 }
 
-.pop-up.visible {
+/* .pop-up.visible {
   visibility: visible;
   opacity: 1;
-}
+} */
 .pop-up__header {
   display: flex;
   justify-content: center;

@@ -40,6 +40,14 @@ const microOffVariants = {
   },
 };
 
+const newVariants = {
+  initial: {opacity: 0, scale: 0.1, y: '-100%', x: '100%'},
+  animate: {opacity: 1, scale: 1, y: 0, x:0,   transition: { duration: 0.25 }},
+  exit: {opacity: 0, scale: 0.1, y: '-100%', x: '100%', transition: { duration: 0.25 }},
+};
+
+
+
 export const New = () => {
   const newTask = useSelector((state: RootState) => state.ui.newTaskOpen);
   const dispatch = useDispatch();
@@ -92,7 +100,17 @@ export const New = () => {
   };
 
   return (
-    <div className={`pop-up ${newTask ? "visible" : ""}`}>
+    <>
+      <div className="overlay-app"></div>
+    
+    <motion.div 
+    className="pop-up"
+    variants={newVariants}
+    initial="initial"
+    animate="animate"
+    exit="exit"
+    
+    >
       <div className="pop-up__header">
         <div className="pop-up__title">New Task</div>
 
@@ -152,6 +170,8 @@ export const New = () => {
           <i className="fa-solid fa-microphone"></i>
         </motion.button>
       )}
-    </div>
+    </motion.div>
+    </>
+    
   );
 };

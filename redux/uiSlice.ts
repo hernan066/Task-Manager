@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface uiState {
-  newTaskOpen: boolean,
+  newTaskOpen: string,
   isDragging: boolean,
   typeTabEntry: string,
 }
 
 const initialState: uiState = {
-    newTaskOpen: false,
+    newTaskOpen: 'id-new-task-close',
     isDragging: false,
     typeTabEntry: 'all',
 }
@@ -22,11 +22,11 @@ export const uiSlice = createSlice({
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
     openNew: (state) => {
-        state.newTaskOpen = true;
+        state.newTaskOpen = 'id-new-task-open';
        
       },
     closeNew: (state) => {
-        state.newTaskOpen = false;
+        state.newTaskOpen = 'id-new-task-close';
        
       },
       startDragging: (state) => {
