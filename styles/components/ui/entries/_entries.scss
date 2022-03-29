@@ -10,14 +10,14 @@
 .apps-card {
   display: flex;
   align-items: center;
-  width: calc(100% + 20px);
+  width: 100%;
   min-height: 650px;
 }
 
 .app-card {
   display: flex;
   flex-direction: column;
-  width: calc(33.3% - 20px);
+  width: calc(33.3% );
   height: 100%;
   font-size: 16px;
   background-color: var(--content-bg);
@@ -99,7 +99,7 @@
 
 @media screen and (max-width: 565px) {
   .app-card {
-    width: calc(100% - 20px);
+    width: 100%;
     margin-bottom: 20px;
   }
   .app-card + .app-card {

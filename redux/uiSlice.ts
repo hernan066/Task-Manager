@@ -4,12 +4,14 @@ export interface uiState {
   newTaskOpen: string,
   isDragging: boolean,
   typeTabEntry: string,
+  openEditTask: boolean,
 }
 
 const initialState: uiState = {
     newTaskOpen: 'id-new-task-close',
     isDragging: false,
     typeTabEntry: 'all',
+    openEditTask: false,
 }
 
 export const uiSlice = createSlice({
@@ -37,6 +39,14 @@ export const uiSlice = createSlice({
         state.isDragging = false;
        
       },
+      openEdit: (state) => {
+        state.openEditTask = true;
+       
+      },
+      closeEdit: (state) => {
+        state.openEditTask = false;
+       
+      },
       setTypeTabEntry: (state, action) => {
           state.typeTabEntry = action.payload;
         },
@@ -46,6 +56,6 @@ export const uiSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {openNew, closeNew, startDragging, endDragging, setTypeTabEntry} = uiSlice.actions
+export const {openNew, closeNew, startDragging, endDragging, setTypeTabEntry, openEdit, closeEdit } = uiSlice.actions
 
 export default uiSlice.reducer

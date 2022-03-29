@@ -29,7 +29,7 @@ export const All = () => {
         <EntryList status="in-progress" />
       </div>
       <div className="app-card">
-        <h4>Complete</h4>
+        <h4>Finished</h4>
 
         <EntryList status="finished" />
       </div>

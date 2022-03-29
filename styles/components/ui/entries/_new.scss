@@ -22,7 +22,10 @@
 }
 .pop-up__title {
   padding-bottom: 20px;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  font-weight: 500;
+  letter-spacing: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,13 +67,14 @@
 }
 
 .new-button {
-  background: none;
+  background: transparent;
+  border-radius: 5px;
   padding: 8px 26px;
   color: #fff;
   margin-top: 16px;
   margin-left: 10px;
   cursor: pointer;
-  *transition: 0.3s;
+  transition: 0.2s;
   white-space: nowrap;
   border: 1px solid var(--border-color-r);
   font-size: 15px;
@@ -79,26 +83,12 @@
 }
 
 .new-button:hover {
-  border-image: linear-gradient(
-      to left top,
-      #cf4af3,
-      #e73bd7,
-      #f631bc,
-      #fd31a2,
-      #ff3a8b,
-      #ff4b78,
-      #ff5e68,
-      #ff705c,
-      #ff8c51,
-      #ffaa49,
-      #ffc848,
-      #ffe652
-    )
-    1;
-  background: rgba(2, 2, 2, 0.1);
+  border-color: rgb(107, 4, 62);
+  
 }
 .new-button:disabled {
   cursor: not-allowed;
+  color: var(--inactive-color);
 }
 
 .pop-up-microphone {

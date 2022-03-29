@@ -7,11 +7,7 @@
   overflow: auto;
   flex-shrink: 0;
 }
-@media screen and (max-width: 945px) {
-  .left-side {
-    display: none;
-  }
-}
+
 
 .side-wrapper + .side-wrapper {
   margin-top: 20px;
@@ -74,4 +70,10 @@
   width: 18px;
   height: 18px;
   font-size: 11px;
+}
+
+@media screen and (max-width: 945px) {
+  .left-side {
+    display: none;
+  }
 }

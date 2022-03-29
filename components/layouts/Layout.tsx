@@ -13,7 +13,7 @@ interface Props {
   title?: string;
 }
 
-export const Layout: FC<Props> = ({ title = "Task Manager", children }) => {
+export const Layout: FC<Props> = ({ title = "Task Manager", children, }) => {
   const newTask = useSelector((state: RootState) => state.ui.newTaskOpen);
 
   return (

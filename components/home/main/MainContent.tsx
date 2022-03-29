@@ -7,15 +7,32 @@ import { All } from "./sections/All";
 import { Complete } from "./sections/Complete";
 import { InProgress } from "./sections/InProgress";
 import { Pending } from "./sections/Pending";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from 'framer-motion';
+import { useRouter } from "next/router";
+
+const sectionsVariants = {
+  initial: {opacity: 0, scale: 0.5},
+  animate: {opacity: 1, scale: 1,  transition: { duration: 0.5}},
+  exit: {opacity: 0, scale: 0.5, transition: { ease: "easeInOut", duration: 0.5 }},
+};
+
 
 export const MainContent = () => {
   const tab = useSelector((state: RootState) => state.ui.typeTabEntry);
   
   const dispatch = useDispatch();
+  const router = useRouter();
+  console.log(router.route);
 
   return (
-    <div className="content-wrapper">
+    <motion.div 
+    className="content-wrapper"
+    variants={sectionsVariants}
+    initial="initial"
+    animate="animate"
+    exit="exit"
+    key={router.route}
+    >
       <div className="main-header">
         <div className="menu-title">Task Status</div>
         <div className="header-menu">
@@ -58,12 +75,12 @@ export const MainContent = () => {
         </button>
       </div>
 
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence exitBeforeEnter  initial={false} >
         {tab === "pending" && <Pending key={tab} />}
         {tab === "inProgress" && <InProgress key={tab} />}
         {tab === "finished" && <Complete key={tab} />}
         {tab === "all" && <All key={tab} />}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
