@@ -13,13 +13,12 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 
 const newVariants = {
-  initial: { opacity: 0, y: "-100%",  x: '-50%' },
-  animate: { opacity: 1, y: '-50%', x: '-50%',  transition: { duration: 0.25 } },
-  exit: {opacity: 0,y: "-100%",transition: { duration: 0.25 }},
+  initial: { opacity: 0, y: "-100%", x: "-50%" },
+  animate: { opacity: 1, y: "-50%", x: "-50%", transition: { duration: 0.25 } },
+  exit: { opacity: 0, y: "-100%", transition: { duration: 0.25 } },
 };
 
 export const New = () => {
-  const newTask = useSelector((state: RootState) => state.ui.newTaskOpen);
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState("");
@@ -38,10 +37,9 @@ export const New = () => {
     SpeechRecognition.stopListening();
 
     if (transcript.length > 0) {
-      transcript.charAt(0).toUpperCase();
-      let transcriptWithDot = transcript + ".";
-
-      setInputValue(transcriptWithDot);
+      setInputValue(
+        transcript.charAt(0).toUpperCase() + transcript.slice(1) + "."
+      );
     }
   };
 

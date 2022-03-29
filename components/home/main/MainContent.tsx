@@ -22,7 +22,7 @@ export const MainContent = () => {
   
   const dispatch = useDispatch();
   const router = useRouter();
-  console.log(router.route);
+  
 
   return (
     <motion.div 

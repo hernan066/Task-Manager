@@ -34,6 +34,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Configurar variables de entorno
+
 Renombrar el archivo __.env.template__ a __.env__
 
 ## Llenar la base de datos con la informacion de pruebas

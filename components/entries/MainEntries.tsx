@@ -16,7 +16,7 @@ interface Props {
   entry: Entry;
 }
 
-const sectionsVariants = {
+/* const sectionsVariants = {
   initial: { opacity: 0, scale: 0.5 },
   animate: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
   exit: {
@@ -24,7 +24,7 @@ const sectionsVariants = {
     scale: 0.5,
     transition: { ease: "easeInOut", duration: 0.5 },
   },
-};
+}; */
 
 export const MainEntries: FC<Props> = ({ entry }) => {
   const dispatch = useDispatch();
